@@ -1,13 +1,203 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap");
+
+* {
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    font-family: "Muli", sans-serif;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    margin: 50px 0 30px;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    background-color: transparent;
+    margin: 20px auto;
+}
+
+.card {
+    border: 1px solid #9fa4a8;
+    border-radius: 15px;
+    margin: 20px 0;
+    padding: 15px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.card.active {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card.active::before,
+.card.active::after {
+    font-family: "Font Awesome 5 Free";
+    content: "?";
+    font-size: 7rem;
+    position: absolute;
+    color: #2ecc71;
+    opacity: 0.15;
+    top: 20px;
+    left: 20px;
+}
+
+.card.active::after {
+    color: aqua;
+    top: -15px;
+    left: -20px;
+    transform: rotateY(180deg);
+}
+
+.title {
+    margin: 15px 35px 0 0;
+    color: rebeccapurple;
+}
+
+.text {
+    display: none;
+    margin: 20px 0 0;
+}
+
+.card.active .text {
+    display: block;
+}
+
+.toggle {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 35px;
+    right: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.toggle:focus {
+    outline: 0;
+}
+
+.toggle .times {
+    display: none;
+}
+
+.card.active .toggle .times {
+    display: block;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card.active .toggle .chevron-down {
+    display: none;
+}
+
+.card.active .toggle {
+    background-color: #9fa4a8;
+}
+
+.add {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 25px;
+    border: none;
+    border-radius: 50%;
+    background-color: rebeccapurple;
+    height: 35px;
+    width: 35px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70vh;
+    width: 50vw;
+    background-color: white;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.modal-content {
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addCardForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+}
+
+.addCardForm input,
+.addCardForm textarea {
+    width: clamp(50%, 600px, 90%);
+    margin: 20px 0px;
+    height: 30px;
+    border: none;
+    background-color: #dbdddf;
+    border-radius: 10px;
+    font-family: inherit;
+}
+.addCardForm textarea {
+    width: clamp(80%, 600px, 90%);
+    height: 80px;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    border: none;
+    background-color: white;
+    color: red;
+    cursor: pointer;
+}
+
+.delete-btn {
+    color: purple;
+    position: absolute;
+    right: 5px;
+    bottom: 0px;
+    background-color: transparent;
+    border: none;
+    transition: transform 0.5s ease;
+    font-size: 25px;
+}
+
+.delete-btn:hover {
+    transform: scale(1.2);
 }
