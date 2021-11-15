@@ -44,17 +44,18 @@ function App() {
                         to add cards
                     </p>
                 ) : null}
-                {cards.map(({ id, question, answer }) => {
-                    return (
-                        <Card
-                            key={id}
-                            id={id}
-                            question={question}
-                            answer={answer}
-                            onDelete={deleteCard}
-                        />
-                    );
-                })}
+                {cards &&
+                    cards.map(({ id, question, answer }) => {
+                        return (
+                            <Card
+                                key={id}
+                                id={id}
+                                question={question}
+                                answer={answer}
+                                onDelete={deleteCard}
+                            />
+                        );
+                    })}
             </div>
 
             <AddBtn onClick={openModal} />
