@@ -7,10 +7,10 @@ function App() {
     const [isOpen, setIsOpen] = useState(false);
     const [cards, setCards] = useState([]);
 
-    useEffect(() => {
+//     useEffect(() => {
 //         const questions = localStorage.getItem("questions");
-        setCards(JSON.parse(questions));
-    }, []);
+//         setCards(JSON.parse(questions));
+//     }, []);
 
     function addQuestionCard(newCard) {
         // console.log(newCard);
