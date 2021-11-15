@@ -38,7 +38,7 @@ function App() {
         <div>
             <h1>Flash Cards</h1>
             <div className="container">
-                {cards.length === 0 ? (
+                {cards === null || cards.length === 0 ? (
                     <p>
                         No Question Cards. CLick the button on the bottom right
                         to add cards
