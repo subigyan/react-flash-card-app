@@ -8,14 +8,14 @@ function App() {
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        const questions = localStorage.getItem("questions");
+//         const questions = localStorage.getItem("questions");
         setCards(JSON.parse(questions));
     }, []);
 
     function addQuestionCard(newCard) {
         // console.log(newCard);
         // console.log([...cards, newCard]);
-        localStorage.setItem("questions", JSON.stringify([...cards, newCard]));
+//         localStorage.setItem("questions", JSON.stringify([...cards, newCard]));
         setCards((prevCards) => [...prevCards, newCard]);
     }
 
@@ -29,7 +29,7 @@ function App() {
         const updatedCards = cards.filter((card) => {
             return card.id !== id;
         });
-        localStorage.setItem("questions", JSON.stringify(updatedCards));
+//         localStorage.setItem("questions", JSON.stringify(updatedCards));
         console.log(id, updatedCards);
         setCards(updatedCards);
     }
