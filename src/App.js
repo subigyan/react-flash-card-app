@@ -1,20 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "./components/Card";
 import AddBtn from "./components/AddBtn";
 import Modal from "./components/Modal";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
-    const [cards, setCards] = useState([
-        {
-            id: 1,
-            question: "Question?",
-            answer: "Answer",
-        },
-    ]);
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        const questions = localStorage.getItem("questions");
+        setCards(JSON.parse(questions));
+    }, []);
 
     function addQuestionCard(newCard) {
-        console.log(newCard);
+        // console.log(newCard);
+        // console.log([...cards, newCard]);
+        localStorage.setItem("questions", JSON.stringify([...cards, newCard]));
         setCards((prevCards) => [...prevCards, newCard]);
     }
 
@@ -28,7 +29,7 @@ function App() {
         const updatedCards = cards.filter((card) => {
             return card.id !== id;
         });
-
+        localStorage.setItem("questions", JSON.stringify(updatedCards));
         console.log(id, updatedCards);
         setCards(updatedCards);
     }
@@ -37,6 +38,12 @@ function App() {
         <div>
             <h1>Flash Cards</h1>
             <div className="container">
+                {cards.length === 0 ? (
+                    <p>
+                        No Question Cards. CLick the button on the bottom right
+                        to add cards
+                    </p>
+                ) : null}
                 {cards.map(({ id, question, answer }) => {
                     return (
                         <Card
