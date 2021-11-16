@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "./components/Card";
 import AddBtn from "./components/AddBtn";
 import Modal from "./components/Modal";
@@ -6,6 +6,13 @@ import Modal from "./components/Modal";
 function App() {
     const [isOpen, setIsOpen] = useState(false);
     const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        let questions = localStorage.getItem("questions");
+        if (questions == null) questions = JSON.stringify([]);
+        console.log(questions);
+        setCards(JSON.parse(questions));
+    }, []);
 
     // useEffect(() => {
     //     //         const questions = localStorage.getItem("questions");
@@ -15,7 +22,7 @@ function App() {
     function addQuestionCard(newCard) {
         // console.log(newCard);
         // console.log([...cards, newCard]);
-        //         localStorage.setItem("questions", JSON.stringify([...cards, newCard]));
+        localStorage.setItem("questions", JSON.stringify([...cards, newCard]));
         setCards((prevCards) => [...prevCards, newCard]);
     }
 
@@ -29,7 +36,7 @@ function App() {
         const updatedCards = cards.filter((card) => {
             return card.id !== id;
         });
-        //         localStorage.setItem("questions", JSON.stringify(updatedCards));
+        localStorage.setItem("questions", JSON.stringify(updatedCards));
         console.log(id, updatedCards);
         setCards(updatedCards);
     }
