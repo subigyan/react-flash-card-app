@@ -10,7 +10,7 @@ function App() {
     useEffect(() => {
         let questions = localStorage.getItem("questions");
         if (questions == null) questions = JSON.stringify([]);
-        console.log(questions);
+        // console.log(questions);
         setCards(JSON.parse(questions));
     }, []);
 

@@ -15,7 +15,7 @@ export const AddCardForm = ({ addNewCard, cards, whenSubmitted }) => {
     }
     return (
         <>
-            <form onSubmit={addCard} className="addCardForm">
+            <form onSubmit={addCard} action="" className="addCardForm">
                 <input
                     ref={questionInputRef}
                     name="question"
